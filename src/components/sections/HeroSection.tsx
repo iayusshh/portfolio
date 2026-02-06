@@ -3,11 +3,14 @@ import { portfolio } from '../../data/portfolio'
 
 function ExternalLink({ href, children }: { href: string; children: string }) {
   const external = href.startsWith('http')
+  const download = !external && href.toLowerCase().endsWith('.pdf')
+
   return (
     <a
       href={href}
       target={external ? '_blank' : undefined}
       rel={external ? 'noreferrer' : undefined}
+      download={download ? 'Ayush_Anand_Resume.pdf' : undefined}
       className="rounded-xl border border-white/15 bg-white/5 px-3 py-1.5 text-sm text-white/85 hover:bg-white/10"
     >
       {children}
@@ -26,7 +29,7 @@ export default function HeroSection() {
             transition={{ duration: 0.6 }}
             className="inline-flex items-center rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-white/75"
           >
-            Available for roles · Job placement ready
+            Building full-stack products · Open to opportunities
           </motion.p>
 
           <motion.h1

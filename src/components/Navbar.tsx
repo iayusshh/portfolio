@@ -4,12 +4,14 @@ import { portfolio } from '../data/portfolio'
 const navItems = [
   { label: 'Projects', href: '#projects' },
   { label: 'Skills', href: '#skills' },
-  { label: 'Experience', href: '#experience' },
+  { label: 'Education', href: '#education' },
   { label: 'Contact', href: '#contact' },
 ]
 
 export default function Navbar() {
   const [open, setOpen] = useState(false)
+  const resumeHref = portfolio.socials.find((s) => s.label === 'Resume')?.href
+  const resumeExternal = resumeHref?.startsWith('http') ?? false
 
   useEffect(() => {
     const onKeyDown = (e: KeyboardEvent) => {
@@ -29,7 +31,45 @@ export default function Navbar() {
               className="text-sm font-semibold tracking-wide text-white/90 hover:text-white"
               onClick={() => setOpen(false)}
             >
-              {portfolio.name}
+              <span className="inline-flex items-center gap-2">
+                <span
+                  className="inline-flex h-6 w-6 items-center justify-center rounded-lg"
+                  aria-hidden="true"
+                >
+                  <svg
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M9 18L3 12L9 6"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      opacity="0.9"
+                    />
+                    <path
+                      d="M15 6L21 12L15 18"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      opacity="0.9"
+                    />
+                    <path
+                      d="M14 4L10 20"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      opacity="0.7"
+                    />
+                  </svg>
+                </span>
+                <span>{portfolio.name}</span>
+              </span>
               <span className="ml-2 hidden text-white/50 sm:inline">· {portfolio.title}</span>
             </a>
 
@@ -43,8 +83,12 @@ export default function Navbar() {
                   {item.label}
                 </a>
               ))}
+
               <a
-                href={portfolio.socials.find((s) => s.label === 'Resume')?.href ?? '#contact'}
+                href={resumeHref ?? '#contact'}
+                target={resumeExternal ? '_blank' : undefined}
+                rel={resumeExternal ? 'noreferrer' : undefined}
+                download={!resumeExternal ? 'Ayush_Anand_Resume.pdf' : undefined}
                 className="rounded-xl border border-white/15 bg-white/5 px-3 py-1.5 text-sm text-white/90 hover:bg-white/10"
               >
                 Resume
@@ -83,6 +127,7 @@ export default function Navbar() {
                       href={link.href}
                       target={link.href.startsWith('http') ? '_blank' : undefined}
                       rel={link.href.startsWith('http') ? 'noreferrer' : undefined}
+                      download={!link.href.startsWith('http') && link.href.toLowerCase().endsWith('.pdf') ? 'Ayush_Anand_Resume.pdf' : undefined}
                       className="rounded-xl border border-white/15 bg-white/5 px-3 py-1.5 text-sm text-white/85 hover:bg-white/10"
                       onClick={() => setOpen(false)}
                     >

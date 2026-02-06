@@ -14,7 +14,7 @@ export default function ProjectsSection() {
     <Section
       id="projects"
       title="Projects"
-      subtitle="A few things I’ve built recently. Swap these out with your real work and links in src/data/portfolio.ts."
+      subtitle="A few things I’ve built recently — focused on real-world features, security, and shipping."
     >
       <div className="grid gap-4 md:grid-cols-2">
         {portfolio.projects.map((p) => (
@@ -50,6 +50,17 @@ export default function ProjectsSection() {
 
             <p className="mt-3 text-sm leading-relaxed text-white/75">{p.description}</p>
 
+            {p.highlights?.length ? (
+              <ul className="mt-4 space-y-2 text-sm text-white/75">
+                {p.highlights.map((h) => (
+                  <li key={h} className="flex gap-3">
+                    <span className="mt-2 inline-block h-1.5 w-1.5 rounded-full bg-white/45" />
+                    <span>{h}</span>
+                  </li>
+                ))}
+              </ul>
+            ) : null}
+
             <div className="mt-4 flex flex-wrap gap-2">
               {p.tech.map((t) => (
                 <Pill key={t}>{t}</Pill>
@@ -57,9 +68,6 @@ export default function ProjectsSection() {
             </div>
 
             <div className="mt-5 h-px w-full bg-gradient-to-r from-transparent via-white/10 to-transparent" />
-            <p className="mt-4 text-xs text-white/55">
-              Tip: Quantify impact (e.g. “reduced load time by 35%”).
-            </p>
           </article>
         ))}
       </div>

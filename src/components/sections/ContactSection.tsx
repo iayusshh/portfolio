@@ -4,6 +4,8 @@ import { portfolio } from '../../data/portfolio'
 
 export default function ContactSection() {
   const [copied, setCopied] = useState(false)
+  const resumeHref = portfolio.socials.find((s) => s.label === 'Resume')?.href
+  const resumeExternal = resumeHref?.startsWith('http') ?? false
 
   const subject = encodeURIComponent('Interview / Opportunity')
   const body = encodeURIComponent(
@@ -49,6 +51,18 @@ export default function ContactSection() {
             >
               Open email
             </a>
+
+            {resumeHref ? (
+              <a
+                href={resumeHref}
+                target={resumeExternal ? '_blank' : undefined}
+                rel={resumeExternal ? 'noreferrer' : undefined}
+                download={!resumeExternal ? 'Ayush_Anand_Resume.pdf' : undefined}
+                className="rounded-2xl border border-white/15 bg-white/5 px-4 py-2.5 text-sm font-semibold text-white/90 hover:bg-white/10"
+              >
+                Download resume
+              </a>
+            ) : null}
           </div>
         </div>
 
@@ -68,13 +82,6 @@ export default function ContactSection() {
                   {s.label}
                 </a>
               ))}
-          </div>
-
-          <div className="mt-5 rounded-2xl border border-white/10 bg-ink-900/40 p-4">
-            <p className="text-sm text-white/70">
-              Want this site to match a job description? I can tailor the projects and skills
-              section to your target roles.
-            </p>
           </div>
         </div>
       </div>

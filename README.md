@@ -1,6 +1,6 @@
-# 3D Portfolio
+# Portfolio
 
-A modern, working 3D portfolio built with React, TypeScript, Vite, and Three.js (via React Three Fiber).
+A modern portfolio built with React, TypeScript, Vite, and Tailwind.
 
 ## Run locally
 
@@ -12,7 +12,7 @@ npm run dev
 ## Customize your content
 
 - Edit your name, links, projects, and experience in `src/data/portfolio.ts`.
-- Drop your resume at `public/resume.pdf` (or change the link in `src/data/portfolio.ts`).
+- Add your resume (either host a local PDF in `public/` or paste a Google Drive/URL in `src/data/portfolio.ts`).
 
 ## Commands
 
@@ -43,5 +43,4 @@ Use an action (recommended) or any static hosting that serves `dist/`.
 
 ## Notes
 
-- The 3D background respects “Reduce motion” settings.
-- Keep 3D assets lightweight for fast loads on mobile.
+- Background is intentionally simple for readability and performance.
