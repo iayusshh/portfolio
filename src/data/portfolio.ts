@@ -42,7 +42,7 @@ export const portfolio = {
     { label: 'LinkedIn', href: 'https://www.linkedin.com/in/ayush-anand-122b67326/' },
     { label: 'LeetCode', href: 'https://leetcode.com/u/iayusshh/' },
     // Google Drive share link converted to direct download.
-    { label: 'Resume', href: 'https://drive.google.com/file/d/1o2MbPtOMQ2BcNpm1Hqb3TwjH2DzKByIY/view?usp=sharing' },
+    { label: 'Resume', href: 'https://drive.google.com/file/d/1o2MbPtOMQ2BcNpm1Hqb3TwjH2DzKByIY/view?usp=share_link' },
   ] satisfies SocialLink[],
   about:
     'I build production-grade full-stack web apps with modern UX, strong auth/data modeling, and a focus on shipping. I enjoy automation and creative web experiences.',
